@@ -1,12 +1,13 @@
+#define NODE_TYPE int
 #include <iostream>
 using namespace std;
 
 class Node{
-    int data;
+    NODE_TYPE data;
     Node * nextNode;
 
     public:
-    Node(int data){
+    Node(NODE_TYPE data){
         this->data = data;
         nextNode = nullptr;
     }
@@ -19,7 +20,7 @@ class Node{
         return nextNode;
     }
 
-    int getData(){
+    NODE_TYPE getData(){
         return data;
     }
 
@@ -32,7 +33,7 @@ class List{
 
     public:
 
-        void addNode(int data){
+        void addNode(NODE_TYPE data){
 
             Node * newNode = new Node(data);
 
@@ -45,7 +46,7 @@ class List{
             }
         }
 
-        void pushNode(int data){
+        void pushNode(NODE_TYPE data){
             Node * newNode = new Node(data);
 
             if(head == nullptr){
@@ -61,8 +62,10 @@ class List{
         void printNodes(){
             Node * temp = head;
             while(temp != nullptr){
-
-                cout << temp->getData() << " -> ";
+                cout << temp->getData();
+                if(temp->getNext() != nullptr) {
+                    cout << " -> ";
+                }
                 temp = temp->getNext();
 
             }
@@ -73,7 +76,78 @@ class List{
         }
 
         void getTail(){
-            cout << "\nTail: " << tail->getData();
+            cout << "\nTail: " << tail->getData() << endl;
+        }
+
+        void searchNode(NODE_TYPE value){
+            Node * temp = head;
+            int tries = 0;
+            bool found = false;
+
+            while(temp != nullptr){
+                if(temp->getData() == value) {found = true; break;};
+                temp = temp->getNext();
+                tries++;
+            }
+
+            if(found){
+                cout << endl;
+                cout << "\nFound: " << value << " At " << tries << endl;
+            } else {
+                cout << endl;
+                cout << "\nCan't find " << value << endl;
+            }
+        }
+
+        void deleteNode(int value){
+            Node * temp = head;
+            bool found = false;
+            while(temp != nullptr){
+                if(temp->getData() == value) {
+                    found = true;
+                    delete temp;
+                    cout << value << " has been deleted.";
+                    break;
+                }
+                temp = temp -> getNext();
+            }
+
+            if(!found){
+                cout << "Couldn't find " << value << endl;
+            }
+        }
+
+        void deleteHead(){
+
+            Node * temp = head;
+            head = temp->getNext();
+            delete temp;
+            cout << "Head deleted." << endl;
+
+        }
+
+        void deleteTail(){
+
+            Node * temp = head;
+            while(temp->getNext()->getNext() != nullptr){
+                temp = temp->getNext();
+            }
+            tail = temp;
+            tail->setNode(nullptr);
+            delete temp->getNext();
+
+        }
+
+        ~List(){
+
+            Node * temp = head;
+            while(temp != nullptr){
+                Node * node = temp->getNext();
+                // cout << temp->getData() << " been deleted" << endl;
+                delete temp;
+                temp = node;
+            }
+
         }
 
 };
@@ -81,7 +155,7 @@ class List{
 int main(){
     List list;
 
-    for(int i = 0; i < 10000; i++){
+    for(int i = 1; i <= 30; i++){
         list.pushNode(i);
     }
 
