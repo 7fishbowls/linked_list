@@ -1,5 +1,4 @@
 #pragma once
-#define NODE_TYPE int
 
 class Node{
 
@@ -8,11 +7,8 @@ class Node{
 
     public:
     Node(NODE_TYPE data);
-
     Node* getNext();
-
     void setNode(Node * node);
-
     NODE_TYPE getData();
 
 };

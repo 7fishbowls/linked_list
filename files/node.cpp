@@ -1,3 +1,4 @@
+#define NODE_TYPE int
 #include "../headers/node.h"
 
 Node::Node(NODE_TYPE data){

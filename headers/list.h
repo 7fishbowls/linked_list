@@ -1,4 +1,5 @@
 #pragma once
+#define NODE_TYPE int
 #include "./node.h"
 
 class List{

@@ -137,7 +137,6 @@ List::~List(){
     Node * temp = head;
     while(temp != nullptr){
         Node * node = temp->getNext();
-        // cout << temp->getData() << " been deleted" << endl;
         delete temp;
         temp = node;
     }
