@@ -28,7 +28,7 @@ void List::pushNode(NODE_TYPE data){
 
 }
 
-void List::printNodes(){
+void List::printNodes() const {
     if(head != nullptr){
         Node * temp = head;
         while(temp != nullptr){
@@ -43,15 +43,15 @@ void List::printNodes(){
     }
 }
 
-void List::getHead(){
+void List::getHead() const{
     if(head != nullptr) cout << "\n-> Head: " << head->getData();
 }
 
-void List::getTail(){
+void List::getTail() const{
     if(head != nullptr) cout << "\n-> Tail: " << tail->getData();
 }
 
-void List::searchNode(NODE_TYPE value){
+void List::searchNode(NODE_TYPE value) const{
     Node * temp = head;
     int tries = 0;
     bool found = false;

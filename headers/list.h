@@ -9,15 +9,15 @@ class List{
 
     public:
 
-    void addNode(NODE_TYPE data);
-    void pushNode(NODE_TYPE data);
-    void printNodes();
-    void getHead();
-    void getTail();
-    void searchNode(NODE_TYPE value);
-    void deleteNode(int value);
+    void printNodes() const;
+    void getHead() const;
+    void getTail() const;
     void deleteHead();
     void deleteTail();
+    void searchNode(NODE_TYPE value) const;
+    void addNode(NODE_TYPE data);
+    void deleteNode(int value);
+    void pushNode(NODE_TYPE data);
 
     ~List();
 
